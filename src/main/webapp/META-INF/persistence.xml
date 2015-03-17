@@ -5,16 +5,16 @@
 	version="2.0">
 	<persistence-unit name="notas" transaction-type="RESOURCE_LOCAL">
 
-		<class>br.com.caelum.notasfiscais.modelo.Item</class>
-		<class>br.com.caelum.notasfiscais.modelo.NotaFiscal</class>
-		<class>br.com.caelum.notasfiscais.modelo.Produto</class>
-		<class>br.com.caelum.notasfiscais.modelo.Usuario</class>
+		<class>br.com.mvabiguzzi.notasfiscais.modelo.Item</class>
+		<class>br.com.mvabiguzzi.notasfiscais.modelo.NotaFiscal</class>
+		<class>br.com.mvabiguzzi.notasfiscais.modelo.Produto</class>
+		<class>br.com.mvabiguzzi.notasfiscais.modelo.Usuario</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/fj26" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.password" value="123@mysql" />
 
 			<!-- JPA não deve usar bean validation -->
 			<property name="javax.persistence.validation.mode" value="none" />
