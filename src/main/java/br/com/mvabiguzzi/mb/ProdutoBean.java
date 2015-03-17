@@ -11,7 +11,10 @@ import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 public class ProdutoBean {
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
-
+	
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 	public Produto getProduto() {
 		return this.produto;
 	}
@@ -27,7 +30,13 @@ public class ProdutoBean {
 	
 	public void grava() {
 		ProdutoDao pDao = new ProdutoDao();
-		pDao.adiciona(this.produto);
+		
+		if(this.produto.getId() == null) {
+			pDao.adiciona(this.produto);
+		} else {
+			pDao.atualiza(this.produto);
+		}
+		
 		this.produto = new Produto();
 		this.produtos = pDao.listaTodos();
 	}
@@ -36,5 +45,9 @@ public class ProdutoBean {
 		ProdutoDao pDao = new ProdutoDao();
 		pDao.remove(produto);
 		this.produtos = pDao.listaTodos();
+	}
+	
+	public void cancela() {
+		this.produto = new Produto();
 	}
 }
