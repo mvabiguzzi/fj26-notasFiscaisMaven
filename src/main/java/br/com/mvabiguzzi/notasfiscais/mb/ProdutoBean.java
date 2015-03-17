@@ -1,4 +1,4 @@
-package br.com.mvabiguzzi.mb;
+package br.com.mvabiguzzi.notasfiscais.mb;
 
 import java.util.List;
 
