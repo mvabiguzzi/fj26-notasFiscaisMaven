@@ -25,20 +25,26 @@
 			</h:panelGrid>
 		</h:form>
 		
-		<h:dataTable value="#{produtoBean.produtos}" var="produto">
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-				#{produto.nome}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Descri&ccedil;&atilde;o</f:facet>
-				#{produto.descricao}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Pre&ccedil;o</f:facet>
-				#{produto.preco}
-			</h:column>
-		</h:dataTable>
+		<h:form>
+			<h:dataTable value="#{produtoBean.produtos}" var="produto">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					#{produto.nome}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descri&ccedil;&atilde;o</f:facet>
+					#{produto.descricao}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Pre&ccedil;o</f:facet>
+					#{produto.preco}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Remover</f:facet>
+					<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
 	</h:body>
 	
 </html>
