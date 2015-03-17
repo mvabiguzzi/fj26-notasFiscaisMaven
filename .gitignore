@@ -2,6 +2,10 @@
 .classpath
 .project
 .settings/
+.metadata/
 
 #Maven
 target/
+
+#Gradle
+.gradle
