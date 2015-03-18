@@ -10,7 +10,7 @@
 	</h:head>
 	
 	<h:body>
-		<h:form>
+		<h:form id="formCadastro">
 		<h:inputHidden value="#{produtoBean.produto.id}"></h:inputHidden>
 		<h2>
 			<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
@@ -54,7 +54,7 @@
 				<h:column>
 					<f:facet name="header">A&ccedil;&otilde;es</f:facet>
 					<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover"><f:ajax render="@form" /></h:commandLink>
-					<h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /></h:commandLink>
+					<h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /><f:ajax render=":formCadastro" /></h:commandLink>
 				</h:column>
 			</h:dataTable>
 		</h:form>
