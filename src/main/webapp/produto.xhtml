@@ -26,12 +26,18 @@
 				<h:outputLabel value="Pre&ccedil;o:" for="preco" />
 					<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
 				
-				<h:commandButton value="Gravar" action="#{produtoBean.grava}" />
-				<h:commandButton value="Cancelar" action="#{produtoBean.cancela}" />
+				<h:commandButton value="Gravar" action="#{produtoBean.grava}">
+					<f:ajax execute="@form :formProdutos" render=":formProdutos" />
+				</h:commandButton>
+				<h:commandButton type="reset" value="Cancelar" rendered="#{empty produtoBean.produto.id}" />
+				<h:commandButton value="Cancelar" action="#{produtoBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
+					<f:setPropertyActionListener target="#{produtoBean.produto}" value="" />
+					<f:ajax render="@form" />
+				</h:commandButton>
 			</h:panelGrid>
 		</h:form>
 		
-		<h:form>
+		<h:form id="formProdutos">
 			<h:dataTable value="#{produtoBean.produtos}" var="produto">
 				<h:column>
 					<f:facet name="header">Nome</f:facet>

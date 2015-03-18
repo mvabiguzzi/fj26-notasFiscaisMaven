@@ -46,8 +46,4 @@ public class ProdutoBean {
 		pDao.remove(produto);
 		this.produtos = pDao.listaTodos();
 	}
-	
-	public void cancela() {
-		this.produto = new Produto();
-	}
 }
