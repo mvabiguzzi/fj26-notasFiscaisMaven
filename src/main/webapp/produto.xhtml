@@ -7,57 +7,70 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Sistema de Notas Fiscais</title>
+		<h:outputStylesheet library="css" name="style.css" />
 	</h:head>
 	
 	<h:body>
-		<h:form id="formCadastro">
-		<h:inputHidden value="#{produtoBean.produto.id}"></h:inputHidden>
-		<h2>
-			<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
-			<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
-		</h2>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Nome:" for="nome" />
+		<div id="cabecalho">
+			<h:graphicImage library="img" name="logo-uber.png" id="logoCompany" />
+		</div>
+		<div id="conteudo">
+			<h:form id="formCadastro">
+				<h2>
+					<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
+					<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
+				</h2>
+				<fieldset>
+					<legend>Dados do Produto</legend>
+					
+					<h:inputHidden value="#{produtoBean.produto.id}"></h:inputHidden>
+					
+					<h:outputLabel value="Nome:" for="nome" />
 					<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
-				
-				<h:outputLabel value="Descri&ccedil;&atilde;o:" for="descricao" />
+					
+					<h:outputLabel value="Descri&ccedil;&atilde;o:" for="descricao" />
 					<h:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" />
-				
-				<h:outputLabel value="Pre&ccedil;o:" for="preco" />
+					
+					<h:outputLabel value="Pre&ccedil;o:" for="preco" />
 					<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
-				
-				<h:commandButton value="Gravar" action="#{produtoBean.grava}">
-					<f:ajax execute="@form :formProdutos" render=":formProdutos" />
-				</h:commandButton>
-				<h:commandButton type="reset" value="Cancelar" rendered="#{empty produtoBean.produto.id}" />
-				<h:commandButton value="Cancelar" action="#{produtoBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
-					<f:setPropertyActionListener target="#{produtoBean.produto}" value="" />
-					<f:ajax render="@form" />
-				</h:commandButton>
-			</h:panelGrid>
-		</h:form>
-		
-		<h:form id="formProdutos">
-			<h:dataTable value="#{produtoBean.produtos}" var="produto">
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					#{produto.nome}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Descri&ccedil;&atilde;o</f:facet>
-					#{produto.descricao}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Pre&ccedil;o</f:facet>
-					#{produto.preco}
-				</h:column>
-				<h:column>
-					<f:facet name="header">A&ccedil;&otilde;es</f:facet>
-					<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover"><f:ajax render="@form" /></h:commandLink>
-					<h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /><f:ajax render=":formCadastro" /></h:commandLink>
-				</h:column>
-			</h:dataTable>
-		</h:form>
+					
+					<h:commandButton value="Gravar" action="#{produtoBean.grava}">
+						<f:ajax execute="@form :formProdutos" render=":formProdutos" />
+					</h:commandButton>
+					<h:commandButton type="reset" value="Cancelar" rendered="#{empty produtoBean.produto.id}" />
+					<h:commandButton value="Cancelar" action="#{produtoBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
+						<f:setPropertyActionListener target="#{produtoBean.produto}" value="" />
+						<f:ajax render="@form" />
+					</h:commandButton>
+				</fieldset>
+			</h:form>
+			<h2>Listagem de Produtos</h2>
+			<h:form id="formProdutos">
+				<h:dataTable value="#{produtoBean.produtos}" var="produto" styleClass="dados" rowClasses="impar,par">
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						#{produto.nome}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Descri&ccedil;&atilde;o</f:facet>
+						#{produto.descricao}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Pre&ccedil;o</f:facet>
+						#{produto.preco}
+					</h:column>
+					<h:column>
+						<f:facet name="header">A&ccedil;&otilde;es</f:facet>
+						<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover"><f:ajax render="@form" /></h:commandLink>
+						<h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /><f:ajax render=":formCadastro" /></h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</div>
+		<div id="rodape">
+			&copy; Copyright 2013.
+			Todos os direitos reservados a Marcos Vin&iacute;us Almeida Biguzzi
+		</div>
 	</h:body>
 	
 </html>
