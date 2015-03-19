@@ -23,7 +23,7 @@ public class LoginBean {
 		System.out.println("O Login era valido? "+loginValido);
 		
 		if(loginValido) {
-			return "produto";
+			return "produto?faces-redirect=true";
 		} else {
 			this.usuario = new Usuario();
 			return "login";
