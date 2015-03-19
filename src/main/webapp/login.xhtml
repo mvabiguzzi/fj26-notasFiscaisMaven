@@ -10,6 +10,9 @@
 		<h:outputStylesheet library="css" name="style.css" />
 	</h:head>
 	<h:body>
+		<div id="cabecalho">
+			<h:graphicImage library="img" name="logo-uber.png" id="logoCompany" />
+		</div>
 		<div id="conteudo">
 			<h2>Login no sistema</h2>
 			<h:form id="fomrLogin">
@@ -23,6 +26,9 @@
 					<h:commandButton value="Efetuar Login" action="#{loginBean.efetuaLogin}" />
 				</h:panelGrid>
 			</h:form>
+		</div>
+		<div id="rodape">
+			&copy; Copyright 2015. Todos os direitos reservados a Marcos Vin&iacute;us Almeida Biguzzi.
 		</div>
 	</h:body>
 </html>
