@@ -1,14 +1,22 @@
 package br.com.mvabiguzzi.notasfiscais.mb;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.UsuarioDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Usuario;
 
-@ManagedBean
+@Named
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private UsuarioDao uDao;
 	private Usuario usuario = new Usuario();
 	
 	public Usuario getUsuario() {
@@ -16,8 +24,6 @@ public class LoginBean {
 	}
 	
 	public String efetuaLogin() {
-		UsuarioDao uDao = new UsuarioDao();
-		
 		boolean loginValido = uDao.existe(this.usuario);
 		
 		System.out.println("O Login era valido? "+loginValido);
@@ -29,4 +35,5 @@ public class LoginBean {
 			return "login";
 		}
 	}
+	
 }
