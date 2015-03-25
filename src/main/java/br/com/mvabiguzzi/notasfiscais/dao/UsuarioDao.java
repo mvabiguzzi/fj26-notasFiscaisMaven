@@ -12,8 +12,13 @@ public class UsuarioDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
+	//@Inject
 	private EntityManager manager;
+	
+	@Inject
+	public UsuarioDao(EntityManager manager) {
+		this.manager = manager;
+	}
 	
 	public boolean existe(Usuario usuario) {
 		
