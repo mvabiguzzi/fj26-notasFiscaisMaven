@@ -9,4 +9,8 @@
 		<phase-listener>br.com.mvabiguzzi.notasfiscais.listener.CicloDeVidaListener</phase-listener>
 	</lifecycle> -->
 	
+	<lifecycle>
+		<phase-listener>br.com.mvabiguzzi.notasfiscais.listener.AutorizadorListener</phase-listener>
+	</lifecycle>
+	
 </faces-config>

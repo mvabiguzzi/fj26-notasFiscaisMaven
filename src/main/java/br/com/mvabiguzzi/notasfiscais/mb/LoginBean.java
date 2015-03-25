@@ -7,8 +7,7 @@ import javax.inject.Named;
 import br.com.mvabiguzzi.notasfiscais.dao.UsuarioDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Usuario;
 
-@Named
-@RequestScoped
+@Named @RequestScoped
 public class LoginBean {
 	
 	@Inject
@@ -17,7 +16,7 @@ public class LoginBean {
 	@Inject
 	private UsuarioLogadoBean usuarioLogado;
 	
-	private Usuario usuario;
+	private Usuario usuario = new Usuario();
 	
 	public Usuario getUsuario() {
 		return this.usuario;
