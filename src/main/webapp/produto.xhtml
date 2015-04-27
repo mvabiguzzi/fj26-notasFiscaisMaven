@@ -12,8 +12,10 @@
 	
 	<h:body>
 		<div id="cabecalho">
-			<h:graphicImage library="img" name="logo-uber.png" id="logoCompany" />
-			<div id="usuarioLogado">Logado como: #{usuarioLogadoBean.usuario.login}</div>
+			<h:form id="formCabecalho">
+				<h:graphicImage library="img" name="logo-uber.png" id="logoCompany" />
+				<div id="usuarioLogado">Logado como: #{usuarioLogadoBean.usuario.login} <h:commandLink value="Logout" action="#{loginBean.logout}" /></div>
+			</h:form>
 		</div>
 		<div id="conteudo">
 			<h:form id="formCadastro">

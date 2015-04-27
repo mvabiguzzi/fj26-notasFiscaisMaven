@@ -37,4 +37,10 @@ public class LoginBean {
 		}
 	}
 	
+	public String logout() {
+		usuarioLogado.deslogar();
+		
+		return "login?faces-redirect=true";
+	}
+	
 }
