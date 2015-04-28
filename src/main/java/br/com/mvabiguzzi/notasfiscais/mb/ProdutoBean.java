@@ -2,13 +2,17 @@ package br.com.mvabiguzzi.notasfiscais.mb;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 
-@ManagedBean
+@Named @RequestScoped
 public class ProdutoBean {
+	
+	@Inject ProdutoDao produtoDao;
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
 	
@@ -22,28 +26,25 @@ public class ProdutoBean {
 	public List<Produto> getProdutos() {
 		if(this.produtos == null) {
 			System.out.println("Carregando produtos...");
-			this.produtos = new ProdutoDao().listaTodos();
+			this.produtos = produtoDao.listaTodos();
 		}
 		
 		return this.produtos;
 	}
 	
-	public void grava() {
-		ProdutoDao pDao = new ProdutoDao();
-		
+	public void grava() {		
 		if(this.produto.getId() == null) {
-			pDao.adiciona(this.produto);
+			produtoDao.adiciona(this.produto);
 		} else {
-			pDao.atualiza(this.produto);
+			produtoDao.atualiza(this.produto);
 		}
 		
 		this.produto = new Produto();
-		this.produtos = pDao.listaTodos();
+		this.produtos = produtoDao.listaTodos();
 	}
 	
 	public void remove(Produto produto) {
-		ProdutoDao pDao = new ProdutoDao();
-		pDao.remove(produto);
-		this.produtos = pDao.listaTodos();
+		produtoDao.remove(produto);
+		this.produtos = produtoDao.listaTodos();
 	}
 }
