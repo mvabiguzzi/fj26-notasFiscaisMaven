@@ -35,7 +35,7 @@
 					<h:inputText id="senha" value="#{usuarioBean.usuario.senha}" />
 					
 					<h:commandButton value="Gravar" action="#{usuarioBean.grava}">
-						<f:ajax execute="@form" render=":formLista" />
+						<f:ajax execute="@form" render="@form :formLista" />
 					</h:commandButton>
 					<h:commandButton type="reset" value="Cancelar" rendered="#{empty usuarioBean.usuario.id}" />
 					<h:commandButton value="Cancelar" rendered="#{not empty usuarioBean.usuario.id}">
@@ -53,7 +53,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">A&ccedil;&otilde;es</f:facet>
-						<h:commandLink action="#{usuarioBean.remove(usuario)}" value="Remover"><f:ajax render="@form" /></h:commandLink>
+						<h:commandLink action="#{usuarioBean.remove(usuario)}" value="Remover"><f:ajax render="@form :formCadastro" /></h:commandLink>
 						<h:commandLink value="Alterar"><f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.usuario}" /><f:ajax render=":formCadastro" /></h:commandLink>
 					</h:column>
 				</h:dataTable>
