@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 			xmlns:f="http://java.sun.com/jsf/core"
 			xmlns:h="http://java.sun.com/jsf/html"
-			xmlns:ui="http://java.sun.com/jsf/facelets">
+			xmlns:ui="http://java.sun.com/jsf/facelets"
+			xmlns:caelum="http://java.sun.com/jsf/composite/caelum">
 	
 	<ui:composition template="_template.xhtml">
 		<ui:define name="conteudo">
@@ -29,6 +30,9 @@
 					<h:commandButton value="Gravar" action="#{produtoBean.grava}">
 						<f:ajax execute="@form :formProdutos" render=":formProdutos" />
 					</h:commandButton>
+					
+					<!-- <caelum:ajaxButton action="#{produtoBean.grava}" value="Gravar" /> -->
+					
 					<h:commandButton type="reset" value="Cancelar" rendered="#{empty produtoBean.produto.id}" />
 					<h:commandButton value="Cancelar" action="#{produtoBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
 						<f:setPropertyActionListener target="#{produtoBean.produto}" value="" />
