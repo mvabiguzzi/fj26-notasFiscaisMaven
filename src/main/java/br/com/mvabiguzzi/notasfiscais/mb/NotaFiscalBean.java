@@ -2,7 +2,10 @@ package br.com.mvabiguzzi.notasfiscais.mb;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.NotaFiscalDao;
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
@@ -10,9 +13,8 @@ import br.com.mvabiguzzi.notasfiscais.modelo.Item;
 import br.com.mvabiguzzi.notasfiscais.modelo.NotaFiscal;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
-import br.com.mvabiguzzi.notasfiscais.util.ViewModel;
 
-@ViewModel
+@Named @ConversationScoped
 public class NotaFiscalBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,15 +22,29 @@ public class NotaFiscalBean implements Serializable {
 	@Inject private NotaFiscalDao notaFiscalDao;
 	@Inject private ProdutoDao produtoDao;
 	
+	@Inject private Conversation conversation;
+	
 	private NotaFiscal notaFiscal = new NotaFiscal();
 	private Item item = new Item();
 	private Long idProduto;
 	
+	public String avanca() {
+		if(conversation.isTransient()) {
+			conversation.begin();
+		}
+		
+		return "notaFiscalItem?faces-redirect=true";
+	}
+	
 	@Transactional
-	public void grava() {
+	public String grava() {
 		notaFiscalDao.adiciona(notaFiscal);
 		
+		conversation.end();
+		
 		notaFiscal = new NotaFiscal();
+		
+		return "notaFiscal?faces-redirect=true";
 	}
 	
 	public void guardaItem() {
