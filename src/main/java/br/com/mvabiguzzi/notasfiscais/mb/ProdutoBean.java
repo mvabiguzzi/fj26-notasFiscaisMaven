@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
+import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
 
 @Named @RequestScoped
 public class ProdutoBean {
@@ -32,6 +33,7 @@ public class ProdutoBean {
 		return this.produtos;
 	}
 	
+	@Transactional
 	public void grava() {		
 		if(this.produto.getId() == null) {
 			produtoDao.adiciona(this.produto);
@@ -43,6 +45,7 @@ public class ProdutoBean {
 		this.produtos = produtoDao.listaTodos();
 	}
 	
+	@Transactional
 	public void remove(Produto produto) {
 		produtoDao.remove(produto);
 		this.produtos = produtoDao.listaTodos();

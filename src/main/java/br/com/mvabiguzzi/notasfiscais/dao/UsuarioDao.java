@@ -43,26 +43,26 @@ public class UsuarioDao implements Serializable {
 	}
 	
 	public void adiciona(Usuario usuario) {
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 		
 		manager.persist(usuario);
 		
-		manager.getTransaction().commit();
+		//manager.getTransaction().commit();
 	}
 	
 	public void atualiza(Usuario usuario) {
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 		
 		manager.merge(usuario);
 		
-		manager.getTransaction().commit();
+		//manager.getTransaction().commit();
 	}
 	
 	public void remove(Usuario usuario) {
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 		
 		manager.remove(manager.merge(usuario));
 		
-		manager.getTransaction().commit();
+		//manager.getTransaction().commit();
 	}
 }

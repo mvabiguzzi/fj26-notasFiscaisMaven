@@ -21,29 +21,29 @@ public class ProdutoDao implements Serializable{
 	}
 
 	public void adiciona(Produto produto) {
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 
 		//persiste o objeto
 		manager.persist(produto);
 		
-		manager.getTransaction().commit();
+		//manager.getTransaction().commit();
 	}
 
 
 	public void remove(Produto produto) {
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 
 		manager.remove(manager.merge(produto));
 
-		manager.getTransaction().commit();
+		//manager.getTransaction().commit();
 	}
 
 	public void atualiza(Produto produto) {
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 
 		manager.merge(produto);
 		
-		manager.getTransaction().commit();
+		//manager.getTransaction().commit();
 	}
 
 	public List<Produto> buscaPorNome(String nome) {

@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.UsuarioDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Usuario;
+import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
 
 @Named @RequestScoped
 public class UsuarioBean {
@@ -33,6 +34,7 @@ public class UsuarioBean {
 		return usuarios;
 	}
 	
+	@Transactional
 	public void grava() {
 		if(usuario.getId() == null) {
 			usuarioDao.adiciona(usuario);
@@ -44,6 +46,7 @@ public class UsuarioBean {
 		usuarios = usuarioDao.listaTodos();
 	}
 	
+	@Transactional
 	public void remove(Usuario usuario) {
 		usuarioDao.remove(usuario);
 		usuarios = usuarioDao.listaTodos();

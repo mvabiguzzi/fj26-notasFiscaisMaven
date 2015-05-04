@@ -11,6 +11,7 @@ import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Item;
 import br.com.mvabiguzzi.notasfiscais.modelo.NotaFiscal;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
+import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
 
 @Named @ViewScoped
 public class NotaFiscalBean implements Serializable {
@@ -24,6 +25,7 @@ public class NotaFiscalBean implements Serializable {
 	private Item item = new Item();
 	private Long idProduto;
 	
+	@Transactional
 	public void grava() {
 		notaFiscalDao.adiciona(notaFiscal);
 		
