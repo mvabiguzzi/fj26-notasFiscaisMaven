@@ -1,14 +1,13 @@
 package br.com.mvabiguzzi.notasfiscais.mb;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.UsuarioDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Usuario;
 
-@Named @RequestScoped
+@Model
 public class LoginBean {
 	
 	@Inject

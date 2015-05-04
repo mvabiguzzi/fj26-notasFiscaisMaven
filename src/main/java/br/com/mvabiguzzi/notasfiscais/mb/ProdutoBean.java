@@ -2,15 +2,14 @@ package br.com.mvabiguzzi.notasfiscais.mb;
 
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
 
-@Named @RequestScoped
+@Model
 public class ProdutoBean {
 	
 	@Inject ProdutoDao produtoDao;
