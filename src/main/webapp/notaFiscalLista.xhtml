@@ -10,7 +10,7 @@
 		<ui:define name="conteudo">
 			<h2>Listagem de Notas Fiscais</h2>
 			<h:form id="formNotasFiscais">
-				<p:dataTable value="#{listaNotaFiscalBean.notasFiscais}" var="notaFiscal" paginator="true" rows="5">
+				<p:dataTable value="#{listaNotaFiscalBean.dataModel}" var="notaFiscal" paginator="true" rows="5" lazy="true">
 					<p:column headerText="CNPJ">
 						#{notaFiscal.cnpj}
 					</p:column>
