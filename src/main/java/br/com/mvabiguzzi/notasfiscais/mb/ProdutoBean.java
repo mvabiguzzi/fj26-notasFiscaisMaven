@@ -5,7 +5,6 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import br.com.mvabiguzzi.notasfiscais.dao.Dao;
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
