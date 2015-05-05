@@ -1,5 +1,10 @@
 package br.com.mvabiguzzi.notasfiscais.util;
 
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
+
 public class ComponentResolver {
 
     public UIComponent findComponent(UIComponent component, String id) {

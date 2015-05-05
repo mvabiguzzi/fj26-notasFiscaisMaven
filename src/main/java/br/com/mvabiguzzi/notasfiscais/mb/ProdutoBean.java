@@ -5,6 +5,7 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
+import br.com.mvabiguzzi.notasfiscais.dao.Dao;
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
@@ -12,7 +13,10 @@ import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
 @Model
 public class ProdutoBean {
 	
-	@Inject ProdutoDao produtoDao;
+	@Inject
+	private ProdutoDao produtoDao;
+	/*@Inject
+	private Dao<Produto> dao;*/
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
 	
