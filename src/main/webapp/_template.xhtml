@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 			xmlns:f="http://java.sun.com/jsf/core"
 			xmlns:h="http://java.sun.com/jsf/html"
-			xmlns:ui="http://java.sun.com/jsf/facelets">
+			xmlns:ui="http://java.sun.com/jsf/facelets"
+			xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,10 +16,21 @@
 		<div id="cabecalho">
 			<h:graphicImage library="img" name="logo-uber.png" id="logoCompany" />
 			<div id="usuarioLogado">
-				<h:form id="formCabecalho" rendered="#{not empty usuarioLogadoBean.usuario.login}">Logado como: #{usuarioLogadoBean.usuario.login} <h:commandLink value="Logout" action="#{loginBean.logout}" /></h:form>
+				<h:form id="formCabecalho" rendered="#{not empty usuarioLogadoBean.usuario.login}">Logado como: #{usuarioLogadoBean.usuario.login}</h:form>
 			</div>
 		</div>
 		<div id="conteudo">
+			<h:form id="menu" rendered="#{not empty usuarioLogadoBean.usuario.login}">
+				<p:menubar>
+					<p:menuitem value="Usuario" url="usuario.xhtml" />
+					<p:menuitem value="Produtos" url="produto.xhtml" icon="ui-icon ui-icon-document" />
+					<p:submenu label="Notas Fiscais">
+						<p:menuitem value="Cadastro" url="notaFiscal.xhtml" />
+						<p:menuitem value="Lista" url="notaFiscalLista.xhtml" />
+					</p:submenu>
+					<p:menuitem value="Sair" action="#{loginBean.logout}" />
+				</p:menubar>
+			</h:form>
 			<ui:insert name="conteudo" />
 		</div>
 		<div id="rodape">
