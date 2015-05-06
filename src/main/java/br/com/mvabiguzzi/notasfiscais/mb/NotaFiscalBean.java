@@ -3,9 +3,7 @@ package br.com.mvabiguzzi.notasfiscais.mb;
 import java.io.Serializable;
 
 import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.mvabiguzzi.notasfiscais.dao.NotaFiscalDao;
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
@@ -13,8 +11,9 @@ import br.com.mvabiguzzi.notasfiscais.modelo.Item;
 import br.com.mvabiguzzi.notasfiscais.modelo.NotaFiscal;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
+import br.com.mvabiguzzi.notasfiscais.util.ViewModel;
 
-@Named @ConversationScoped
+@ViewModel
 public class NotaFiscalBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -40,7 +39,7 @@ public class NotaFiscalBean implements Serializable {
 	public String grava() {
 		notaFiscalDao.adiciona(notaFiscal);
 		
-		conversation.end();
+		//conversation.end();
 		
 		notaFiscal = new NotaFiscal();
 		

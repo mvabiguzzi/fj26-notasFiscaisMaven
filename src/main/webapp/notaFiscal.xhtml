@@ -9,17 +9,57 @@
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="conteudo">
 			<h:form>
-				<fieldset>
-					<legend>Dados da Nota</legend>
-					
-					<h:outputLabel value="Cnpj do Cliente:" />
-					<p:inputMask mask="99.999.999/9999-99" value="#{notaFiscalBean.notaFiscal.cnpj}"></p:inputMask>
-					
-					<h:outputLabel value="Data:" />
-					<p:calendar pattern="dd/MM/yyyy" value="#{notaFiscalBean.notaFiscal.data.time}" />
-				</fieldset>
-				
-				<h:commandButton value="Avan&ccedil;ar" action="#{notaFiscalBean.avanca}" />
+				<p:tabView>
+					<p:tab title="Dados da Nota">
+						<fieldset>
+							<legend>Dados da Nota</legend>
+							
+							<h:outputLabel value="Cnpj do Cliente:" />
+							<p:inputMask mask="99.999.999/9999-99" value="#{notaFiscalBean.notaFiscal.cnpj}"></p:inputMask>
+							
+							<h:outputLabel value="Data:" />
+							<p:calendar pattern="dd/MM/yyyy" value="#{notaFiscalBean.notaFiscal.data.time}" />
+						</fieldset>
+					</p:tab>
+					<p:tab title="Dados do Item">
+						<fieldset>
+							<legend>Dados do item</legend>
+							
+							<h:outputLabel value="Produto:" />
+							<h:selectOneMenu value="#{notaFiscalBean.idProduto}">
+								<f:selectItems value="#{produtoBean.produtos}" var="produto" itemValue="#{produto.id}" itemLabel="#{produto.nome}" />
+							</h:selectOneMenu>
+							
+							<h:outputLabel value="Quantidade:" />
+							<h:inputText value="#{notaFiscalBean.item.quantidade}" />
+							
+							<h:commandButton value="Incluir Item" action="#{notaFiscalBean.guardaItem}"><f:ajax execute="@form" render="@form" /></h:commandButton>
+						</fieldset>
+						
+						<h:commandButton value="Gravar" action="#{notaFiscalBean.grava}"><f:ajax excute="@form" render="@form" /></h:commandButton>
+						
+						<h2>Itens da nota fiscal</h2>
+						
+						<h:dataTable value="#{notaFiscalBean.notaFiscal.itens}" var="item" styleClass="dados" rowClasses="impar,par">
+							<h:column>
+								<f:facet name="header">Produto</f:facet>
+								#{item.produto.nome}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Valor Unit&aacute;rio</f:facet>
+								<h:outputText value="#{item.valorUnitario}"><f:convertNumber type="currency" currencySymbol="R$ " locale="pt_BR" /></h:outputText>
+							</h:column>
+							<h:column>
+								<f:facet name="header">Quantidade</f:facet>
+								#{item.quantidade}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Total</f:facet>
+								<h:outputText value="#{item.total}"><f:convertNumber type="currency" currencySymbol="R$ " locale="pt_BR" /></h:outputText>
+							</h:column>
+						</h:dataTable>
+					</p:tab>
+				</p:tabView>
 			</h:form>
 		</ui:define>
 	</ui:composition>
