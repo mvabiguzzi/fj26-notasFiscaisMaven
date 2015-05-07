@@ -14,19 +14,18 @@
 					<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
 					<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
 				</h2>
-				<fieldset>
-					<legend>Dados do Produto</legend>
-					
+				<p:fieldset legend="Dados do Produto">
+				
 					<h:inputHidden value="#{produtoBean.produto.id}"></h:inputHidden>
 					
-					<h:outputLabel value="Nome:" for="nome" />
-					<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
+					<p:outputLabel value="Nome:" for="nome" />
+					<p:inputText id="nome" value="#{produtoBean.produto.nome}" />
 					
 					<h:outputLabel value="Descri&ccedil;&atilde;o:" for="descricao" />
-					<h:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" />
+					<p:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" autoResize="false" style="resize:none;" />
 					
 					<h:outputLabel value="Pre&ccedil;o:" for="preco" />
-					<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
+					<p:inputText id="preco" value="#{produtoBean.produto.preco}" />
 					
 					<h:commandButton value="Gravar" action="#{produtoBean.grava}">
 						<f:ajax execute="@form :formProdutos" render="@form :formProdutos" />
@@ -39,7 +38,7 @@
 						<f:setPropertyActionListener target="#{produtoBean.produto}" value="" />
 						<f:ajax render="@form" />
 					</h:commandButton>
-				</fieldset>
+				</p:fieldset>
 			</h:form>
 			<h2>Listagem de Produtos</h2>
 			<h:form id="formProdutos">
