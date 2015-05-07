@@ -65,4 +65,8 @@ public class ProdutoBean implements Serializable {
 		this.produtos = produtoDao.listaTodos();
 	}
 	
+	public List<Produto> busca(String nome) {
+		return produtoDao.buscaPorNome(nome);
+	}
+	
 }
