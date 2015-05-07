@@ -65,6 +65,19 @@ public class ProdutoDao implements Serializable{
 		return lista; 
 	}
 	
+	public int contaTodos() {
+		long result = (Long) manager.createQuery("select count(p) from Produto p").getSingleResult();
+		
+		return (int) result;
+	}
+	
+	public List<Produto> listaTodosPaginada(int firstResult, int maxResults) {
+		CriteriaQuery<Produto> query = manager.getCriteriaBuilder().createQuery(Produto.class);
+		query.select(query.from(Produto.class));
+		
+		return manager.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+	}
+	
 	public Produto buscaPorId(Long id) {
 		Produto produto = manager.find(Produto.class, id);
 		

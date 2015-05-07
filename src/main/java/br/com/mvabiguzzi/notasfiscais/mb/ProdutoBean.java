@@ -1,16 +1,21 @@
 package br.com.mvabiguzzi.notasfiscais.mb;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+
+import org.primefaces.model.LazyDataModel;
 
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
+import br.com.mvabiguzzi.notasfiscais.util.ViewModel;
 
-@Model
-public class ProdutoBean {
+@ViewModel
+public class ProdutoBean implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private ProdutoDao produtoDao;
@@ -18,6 +23,8 @@ public class ProdutoBean {
 	private Dao<Produto> dao;*/
 	private Produto produto = new Produto();
 	private List<Produto> produtos;
+	@Inject
+	private LazyDataModel<Produto> dataModelProdutos;
 	
 	public void setProduto(Produto produto) {
 		this.produto = produto;
@@ -35,6 +42,10 @@ public class ProdutoBean {
 		return this.produtos;
 	}
 	
+	public LazyDataModel<Produto> getDataModelProdutos() {
+		return dataModelProdutos;
+	}
+	
 	@Transactional
 	public void grava() {		
 		if(this.produto.getId() == null) {
@@ -49,7 +60,9 @@ public class ProdutoBean {
 	
 	@Transactional
 	public void remove(Produto produto) {
+		System.out.println("Removendo produto "+produto.getNome());
 		produtoDao.remove(produto);
 		this.produtos = produtoDao.listaTodos();
 	}
+	
 }
