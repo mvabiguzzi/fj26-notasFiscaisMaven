@@ -20,6 +20,13 @@
 			</div>
 		</div>
 		<div id="conteudo">
+			<h:form id="themeSwitcher" rendered="#{not empty usuarioLogadoBean.usuario.login}">
+				<h:outputLabel value="Tema:" for="themeSwitcher" />
+				<p:themeSwitcher id="themeSwitcher" value="#{temaBean.tema}">
+					<f:selectItems value="#{temaBean.temas}" />
+					<f:ajax />
+				</p:themeSwitcher>
+			</h:form>
 			<h:form id="menu" rendered="#{not empty usuarioLogadoBean.usuario.login}">
 				<p:menubar>
 					<p:menuitem value="Usuario" url="usuario.xhtml" />

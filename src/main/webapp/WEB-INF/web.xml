@@ -10,8 +10,13 @@
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
   
-  <context-param>
-  	<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name><!-- Diz para o JSF ignorar comentarios na geração do HTML -->
-  	<param-value>true</param-value>
-  </context-param>
+	<context-param>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name><!-- Diz para o JSF ignorar comentarios na geração do HTML -->
+		<param-value>true</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>#{temaBean.tema}</param-value>
+	</context-param>
 </web-app>

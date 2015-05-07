@@ -7,6 +7,15 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>fj26-notasFiscais Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <repositories>
+  	<repository>
+  		<id>primefaces-repo</id>
+  		<name>Primefaces Maven Repository</name>
+ 			<url>http://repository.primefaces.org</url>
+  	</repository>
+  </repositories>
+  
   <dependencies>
   	<dependency>
   		<groupId>commons-fileupload</groupId>
@@ -22,6 +31,16 @@
   		<groupId>org.primefaces</groupId>
   		<artifactId>primefaces</artifactId>
   		<version>5.2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.primefaces.themes</groupId>
+  		<artifactId>aristo</artifactId>
+  		<version>1.0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.primefaces.themes</groupId>
+  		<artifactId>cruze</artifactId>
+  		<version>1.0.10</version>
   	</dependency>
     <dependency>
       <groupId>junit</groupId>
