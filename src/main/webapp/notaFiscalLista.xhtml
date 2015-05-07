@@ -8,17 +8,24 @@
 	
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="conteudo">
-			<h2>Listagem de Notas Fiscais</h2>
-			<h:form id="formNotasFiscais">
-				<p:dataTable value="#{listaNotaFiscalBean.dataModel}" var="notaFiscal" paginator="true" rows="5" lazy="true">
-					<p:column headerText="CNPJ">
-						#{notaFiscal.cnpj}
-					</p:column>
-					<p:column headerText="Data Emiss&atilde;o">
-						<h:outputText value="#{notaFiscal.data.time}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />s</h:outputText>
-					</p:column>
-				</p:dataTable>
-			</h:form>
+			<p:tabView>
+				<p:tab title="Listagem de Notas Fiscais">
+					<h2>Listagem de Notas Fiscais</h2>
+					<h:form id="formNotasFiscais">
+						<p:dataTable value="#{listaNotaFiscalBean.dataModel}" var="notaFiscal" paginator="true" rows="5" lazy="true">
+							<p:column headerText="CNPJ">
+								#{notaFiscal.cnpj}
+							</p:column>
+							<p:column headerText="Data Emiss&atilde;o">
+								<h:outputText value="#{notaFiscal.data.time}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />s</h:outputText>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</p:tab>
+				<p:tab title="Gr&aacute;ficos">
+					<p:chart type="pie" model="#{listaNotaFiscalBean.relatorioQuantidadeVendidaProduto}" />
+				</p:tab>
+			</p:tabView>
 		</ui:define>
 	</ui:composition>
 	

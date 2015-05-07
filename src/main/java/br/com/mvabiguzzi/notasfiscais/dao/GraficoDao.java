@@ -17,7 +17,7 @@ public class GraficoDao implements Serializable {
 
 	public List<QuantidadePorProduto> relatorioQuantidadePorProduto() {
 		return manager.createQuery(
-			  "select new br.com.caelum.notasfiscais.modelo.QuantidadePorProduto(sum(i.quantidade), i.produto) "
+			  "select new br.com.mvabiguzzi.notasfiscais.modelo.QuantidadePorProduto(sum(i.quantidade), i.produto) "
 			+ " from Item i group by i.produto" , QuantidadePorProduto.class).getResultList();
 	}
 }
