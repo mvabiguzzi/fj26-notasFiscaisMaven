@@ -40,7 +40,7 @@
 						
 						<h2>Itens da nota fiscal</h2>
 						
-						<h:dataTable value="#{notaFiscalBean.notaFiscal.itens}" var="item" styleClass="dados" rowClasses="impar,par">
+						<h:dataTable value="#{notaFiscalBean.notaFiscal.itens}" var="item" styleClass="dados" rowClasses="impar,par" binding="#{notaFiscalBean.tabela}">
 							<h:column>
 								<f:facet name="header">Produto</f:facet>
 								#{item.produto.nome}
@@ -56,6 +56,9 @@
 							<h:column>
 								<f:facet name="header">Total</f:facet>
 								<h:outputText value="#{item.total}"><f:convertNumber type="currency" currencySymbol="R$ " locale="pt_BR" /></h:outputText>
+							</h:column>
+							<h:column>
+								<h:commandLink action="#{notaFiscalBean.removeItem}" value="Remover"><f:ajax render="@form" /></h:commandLink>
 							</h:column>
 						</h:dataTable>
 					</p:tab>

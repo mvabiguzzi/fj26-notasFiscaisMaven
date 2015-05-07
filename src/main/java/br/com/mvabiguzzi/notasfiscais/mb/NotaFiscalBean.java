@@ -3,6 +3,7 @@ package br.com.mvabiguzzi.notasfiscais.mb;
 import java.io.Serializable;
 
 import javax.enterprise.context.Conversation;
+import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 
 import br.com.mvabiguzzi.notasfiscais.dao.NotaFiscalDao;
@@ -26,6 +27,8 @@ public class NotaFiscalBean implements Serializable {
 	private NotaFiscal notaFiscal = new NotaFiscal();
 	private Item item = new Item();
 	private Long idProduto;
+	
+	private HtmlDataTable tabela;
 	
 	public String avanca() {
 		if(conversation.isTransient()) {
@@ -58,6 +61,11 @@ public class NotaFiscalBean implements Serializable {
 		item = new Item();
 	}
 	
+	public void removeItem() {
+		Item item = (Item) tabela.getRowData();
+		notaFiscal.getItens().remove(item);
+	}
+	
 	public NotaFiscal getNotaFiscal() {
 		return notaFiscal;
 	}
@@ -80,6 +88,14 @@ public class NotaFiscalBean implements Serializable {
 
 	public void setIdProduto(Long idProduto) {
 		this.idProduto = idProduto;
+	}
+
+	public HtmlDataTable getTabela() {
+		return tabela;
+	}
+
+	public void setTabela(HtmlDataTable tabela) {
+		this.tabela = tabela;
 	}
 	
 }
