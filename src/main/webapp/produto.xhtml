@@ -26,7 +26,13 @@
 					<p:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" autoResize="false" style="resize:none;" />
 					
 					<h:outputLabel value="Pre&ccedil;o:" for="preco" />
-					<p:inputText id="preco" value="#{produtoBean.produto.preco}" />
+					<!-- <h:inputText id="preco" value="#{produtoBean.produto.preco}" required="true" requiredMessage="Pre&ccedil;o obrigat&oacute;rio" validatorMessage="O valor m&iacute;nimo &eacute; 0,50">
+						<f:validateDoubleRange minimum="0.50" />
+					</h:inputText> -->
+					
+					<p:inputText id="precoPrime" value="#{produtoBean.produto.preco}" required="true" requiredMessage="Pre&ccedil;o obrigat&oacute;rio" validatorMessage="O valor m&iacute;nimo &eacute; 0,50">
+						<f:validateDoubleRange minimum="0.50" />
+					</p:inputText>
 					
 					<h:commandButton value="Gravar" action="#{produtoBean.grava}">
 						<f:ajax execute="@form :formProdutos" render="@form :formProdutos" />
