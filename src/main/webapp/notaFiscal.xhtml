@@ -9,13 +9,15 @@
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="conteudo">
 			<h:form>
+				<p:messages />
 				<p:tabView>
 					<p:tab title="Dados da Nota">
 						<fieldset>
 							<legend>Dados da Nota</legend>
 							
 							<h:outputLabel value="Cnpj do Cliente:" />
-							<p:inputMask mask="99.999.999/9999-99" value="#{notaFiscalBean.notaFiscal.cnpj}"></p:inputMask>
+							<!-- <h:inputText value="#{notaFiscalBean.notaFiscal.cnpj}" /> -->
+							<p:inputMask mask="99.999.999/9999-99" value="#{notaFiscalBean.notaFiscal.cnpj}" />
 							
 							<h:outputLabel value="Data:" />
 							<p:calendar pattern="dd/MM/yyyy" value="#{notaFiscalBean.notaFiscal.data.time}" />
@@ -29,12 +31,12 @@
 							<p:autoComplete value="#{notaFiscalBean.idProduto}" completeMethod="#{produtoBean.busca}" minQueryLength="3" var="produto" itemLabel="#{produto.nome}" itemValue="#{produto.id}" />
 							<br />
 							<h:outputLabel value="Quantidade:" />
-							<h:inputText value="#{notaFiscalBean.item.quantidade}" />
+							<p:inputText value="#{notaFiscalBean.item.quantidade}" />
 							
 							<h:commandButton value="Incluir Item" action="#{notaFiscalBean.guardaItem}"><f:ajax execute="@form" render="@form" /></h:commandButton>
 						</fieldset>
 						
-						<h:commandButton value="Gravar" action="#{notaFiscalBean.grava}"><f:ajax excute="@form" render="@form" /></h:commandButton>
+						<p:commandButton value="Gravar" action="#{notaFiscalBean.grava}" process="@form" update="@form" />
 						
 						<h2>Itens da nota fiscal</h2>
 						

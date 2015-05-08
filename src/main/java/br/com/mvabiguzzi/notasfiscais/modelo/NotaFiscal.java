@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class NotaFiscal {
@@ -19,7 +20,8 @@ public class NotaFiscal {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@Pattern(regexp="^[\\d]{2}\\.[\\d]{3}\\.[\\d]{3}\\/[\\d]{4}\\-[\\d]{2}$", message="CNPJ Inválido")
 	private String cnpj;
 
 	@Temporal(TemporalType.DATE)
