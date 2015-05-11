@@ -13,12 +13,12 @@
 			<h:form id="fomrLogin">
 				<h:panelGrid columns="2" styleClass="campos">
 					<h:outputLabel value="Login:" for="login" />
-					<p:inputText id="login" value="#{loginBean.usuario.login}" />
+					<p:inputText id="login" value="#{loginBean.usuario.login}" required="true" />
 					
 					<h:outputLabel value="Senha:" for="senha" />
 					<p:keyboard id="senha" value="#{loginBean.usuario.senha}" password="true" />
 					
-					<h:commandButton value="Efetuar Login" action="#{loginBean.efetuaLogin}" />
+					<p:commandButton value="Efetuar Login" action="#{loginBean.efetuaLogin}" ajax="false" />
 				</h:panelGrid>
 			</h:form>
 		</ui:define>
