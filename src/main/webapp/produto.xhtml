@@ -27,7 +27,7 @@
 					<h:outputLabel value="Descri&ccedil;&atilde;o:" for="descricao" />
 					<p:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" autoResize="false" style="resize:none;" />
 					
-					<h:outputLabel value="Pre&ccedil;o:" for="preco" />
+					<h:outputLabel value="Pre&ccedil;o:" for="precoPrime" />
 					<!-- <h:inputText id="preco" value="#{produtoBean.produto.preco}" required="true" requiredMessage="Pre&ccedil;o obrigat&oacute;rio" validatorMessage="O valor m&iacute;nimo &eacute; 0,50">
 						<f:validateDoubleRange minimum="0.50" />
 					</h:inputText> -->
@@ -42,11 +42,15 @@
 					
 					<!-- <caelum:ajaxButton action="#{produtoBean.grava}" value="Gravar" /> -->
 					
-					<h:commandButton type="reset" value="Cancelar" rendered="#{empty produtoBean.produto.id}" />
-					<h:commandButton value="Cancelar" rendered="#{not empty produtoBean.produto.id}">
+					<p:commandButton type="reset" value="Cancelar" rendered="#{empty produtoBean.produto.id}" />
+					<!-- <h:commandButton value="Cancelar" rendered="#{not empty produtoBean.produto.id}">
 						<f:setPropertyActionListener target="#{produtoBean.produto}" value="" />
 						<f:ajax render="@form" />
-					</h:commandButton>
+					</h:commandButton> -->
+					<p:commandButton value="Cancelar" rendered="${not empty produtoBean.produto.id}" immediate="true" update="@form">
+						<f:setPropertyActionListener value="" target="#{produtoBean.produto}" />
+						<p:resetInput target="@form" />
+					</p:commandButton>
 				</p:fieldset>
 			</h:form>
 			<h2>Listagem de Produtos</h2>
@@ -58,7 +62,8 @@
 					<p:column headerText="A&ccedil;&otilde;es">
 						<p:commandLink value="Remover" action="#{produtoBean.remove(produto)}" update="@form" />
 						<!-- <h:commandLink value="Remover" action="#{produtoBean.remove(produto)}"><f:ajax render="@form" /></h:commandLink> -->
-						<h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /><f:ajax render=":formCadastro" /></h:commandLink>
+						<!-- h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /><f:ajax render=":formCadastro" /></h:commandLink> -->
+						<p:commandLink value="Alterar" update=":formCadastro"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /></p:commandLink>
 					</p:column>
 				</p:dataTable>
 			</h:form>

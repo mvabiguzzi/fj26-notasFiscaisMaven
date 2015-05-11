@@ -69,4 +69,8 @@ public class ProdutoBean implements Serializable {
 		return produtoDao.buscaPorNome(nome);
 	}
 	
+	public void cancela() {
+		this.produto = new Produto();
+	}
+	
 }
