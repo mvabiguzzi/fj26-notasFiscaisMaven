@@ -8,6 +8,10 @@
 			xmlns:p="http://primefaces.org/ui">
 	
 	<ui:composition template="_template.xhtml">
+		<f:metadata>
+			<f:viewParam name="produto.id" value="#{produtoBean.produtoId}" />
+			<f:viewAction action="#{produtoBean.carregaProduto}" />
+		</f:metadata>
 		<ui:define name="conteudo">
 			<h:form id="formCadastro">
 				<h:messages styleClass="erros" />
