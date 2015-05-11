@@ -68,6 +68,10 @@
 						<!-- <h:commandLink value="Remover" action="#{produtoBean.remove(produto)}"><f:ajax render="@form" /></h:commandLink> -->
 						<!-- h:commandLink value="Alterar"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /><f:ajax render=":formCadastro" /></h:commandLink> -->
 						<p:commandLink value="Alterar" update=":formCadastro"><f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" /></p:commandLink>
+						<h:outputLink value="produto.xhtml">
+							<h:outputText value="Editar GET" />
+							<f:param name="produto.id" value="#{produto.id}" />
+						</h:outputLink>
 					</p:column>
 				</p:dataTable>
 			</h:form>
