@@ -3,10 +3,6 @@ package br.com.mvabiguzzi.notasfiscais.mb;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
 import org.primefaces.model.LazyDataModel;
@@ -71,14 +67,6 @@ public class ProdutoBean implements Serializable {
 	
 	public List<Produto> busca(String nome) {
 		return produtoDao.buscaPorNome(nome);
-	}
-	
-	public void comecaComMaiuscula(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
-		String valor = value.toString();
-		
-		if(!valor.matches("[A-Z].*")) {
-			throw new ValidatorException(new FacesMessage("Deveria começar com maiuscula"));
-		}
 	}
 	
 }

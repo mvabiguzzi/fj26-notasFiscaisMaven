@@ -20,7 +20,9 @@
 					<h:inputHidden value="#{produtoBean.produto.id}"></h:inputHidden>
 					
 					<p:outputLabel value="Nome:" for="nome" />
-					<p:inputText id="nome" value="#{produtoBean.produto.nome}" validator="#{produtoBean.comecaComMaiuscula}" />
+					<p:inputText id="nome" value="#{produtoBean.produto.nome}">
+						<f:validator validatorId="comecaComMaiuscula" />
+					</p:inputText>
 					
 					<h:outputLabel value="Descri&ccedil;&atilde;o:" for="descricao" />
 					<p:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}" autoResize="false" style="resize:none;" />
