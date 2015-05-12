@@ -14,7 +14,8 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message="Produto deve ter um nome valido")
+	//@NotEmpty(message="Produto deve ter um nome valido")
+	@NotEmpty
 	private String nome;
 
 	private String descricao;
