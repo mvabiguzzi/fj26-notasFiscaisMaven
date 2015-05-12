@@ -14,7 +14,7 @@
 		</f:metadata>
 		<ui:define name="conteudo">
 			<h:form id="formCadastro">
-				<h:messages styleClass="erros" />
+				<h:messages styleClass="erros" infoStyle="color:darkgreen" />
 				<h2>
 					<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
 					<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />

@@ -7,10 +7,10 @@ import javax.inject.Inject;
 
 import org.primefaces.model.LazyDataModel;
 
-import br.com.mvabiguzzi.notasfiscais.dao.Dao;
 import br.com.mvabiguzzi.notasfiscais.dao.ProdutoDao;
 import br.com.mvabiguzzi.notasfiscais.modelo.Produto;
 import br.com.mvabiguzzi.notasfiscais.tx.Transactional;
+import br.com.mvabiguzzi.notasfiscais.util.JsfUtil;
 import br.com.mvabiguzzi.notasfiscais.util.ViewModel;
 
 @ViewModel
@@ -26,6 +26,8 @@ public class ProdutoBean implements Serializable {
 	private List<Produto> produtos;
 	@Inject
 	private LazyDataModel<Produto> dataModelProdutos;
+	@Inject
+	private JsfUtil jsfUtil;
 	
 	private Long produtoId;
 	
@@ -65,6 +67,8 @@ public class ProdutoBean implements Serializable {
 		
 		this.produto = new Produto();
 		this.produtos = produtoDao.listaTodos();
+		
+		jsfUtil.addMessage("produto_messageAdicionadoComSucesso");
 	}
 	
 	@Transactional
