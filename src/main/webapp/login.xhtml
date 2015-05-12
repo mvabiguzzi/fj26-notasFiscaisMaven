@@ -9,16 +9,16 @@
 	<ui:composition template="_template.xhtml">
 		<ui:define name="title"><title>Login UberDist</title></ui:define>
 		<ui:define name="conteudo">
-			<h2>Login no sistema</h2>
+			<h2>#{bundle.login_h2}</h2>
 			<h:form id="fomrLogin">
 				<h:panelGrid columns="2" styleClass="campos">
-					<h:outputLabel value="Login:" for="login" />
+					<h:outputLabel value="#{bundle.login_labelUsuario}" for="login" />
 					<p:inputText id="login" value="#{loginBean.usuario.login}" required="true" />
 					
-					<h:outputLabel value="Senha:" for="senha" />
+					<h:outputLabel value="#{bundle.login_labelSenha}" for="senha" />
 					<p:keyboard id="senha" value="#{loginBean.usuario.senha}" password="true" />
 					
-					<p:commandButton value="Efetuar Login" action="#{loginBean.efetuaLogin}" ajax="false" />
+					<p:commandButton value="#{bundle.login_btnSubmitValue}" action="#{loginBean.efetuaLogin}" ajax="false" />
 				</h:panelGrid>
 			</h:form>
 		</ui:define>
