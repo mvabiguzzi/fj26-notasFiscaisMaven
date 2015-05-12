@@ -27,6 +27,10 @@
 					<f:ajax />
 				</p:themeSwitcher>
 			</h:form>
+			<h:form id="i18n" styleClass="i18n">
+				<h:commandLink value="EN" action="#{internacionalizacaoBean.mudaPara('en')}" />
+				<h:commandLink value="PT" action="#{internacionalizacaoBean.mudaPara('pt')}" />
+			</h:form>
 			<h:form id="menu" rendered="#{not empty usuarioLogadoBean.usuario.login}">
 				<p:menubar>
 					<p:menuitem value="Usuario" url="usuario.xhtml" />
